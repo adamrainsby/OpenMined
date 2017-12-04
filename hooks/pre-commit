@@ -1,0 +1,20 @@
+#!/bin/sh
+
+red='\033[0;31m'
+no_color='\033[0m'
+
+csfiles=$(git diff --cached --name-only --diff-filter=ACM | grep '.cs$')
+[ -z "$csfiles" ] && exit 0
+
+uncrustifypath=$(command -v uncrustify)
+if [[ -z "$uncrustifypath" ]]; then
+  >&2 echo "\n${red}ERROR - Please install uncrustify\n${no_color}"
+  exit 1
+fi
+uncrustify -c .uncrustify $csfiles --suffix ''
+
+# TODO: Implement rollback rather than deleting backups
+backupfiles=$(git diff --name-only --diff-filter=ACM | grep '.unc-backup')
+rm $backupfiles
+
+git add .

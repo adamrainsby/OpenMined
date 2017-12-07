@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OpenMined.Syft.Tensor
-{
-	public partial class FloatTensor
-	{
+namespace OpenMined.Syft.Tensor {
+	public partial class FloatTensor {
 
 		private bool autograd;
 		private bool keepgrads;
@@ -15,14 +13,14 @@ namespace OpenMined.Syft.Tensor
 
 		private FloatTensor grad;
 
-	
+
 
 		public void InitAutograd() {
-//			if(!autograd) {
-				autograd=true;
-				creators = new List<FloatTensor> ();
-				children = new Dictionary<int, int> ();
-//			}
+			//			if(!autograd) {
+			autograd=true;
+			creators = new List<FloatTensor> ();
+			children = new Dictionary<int, int> ();
+			//			}
 		}
 
 		public bool AllChildrenGradsAccountedFor() {
@@ -36,7 +34,7 @@ namespace OpenMined.Syft.Tensor
 		}
 
 		public void HookAutograd(ref FloatTensor result, ref FloatTensor x, string creation_op) {
-		
+
 			if (autograd) {
 
 				result.InitAutograd ();
@@ -48,7 +46,7 @@ namespace OpenMined.Syft.Tensor
 				x.children.Add (result.Id, 0);
 
 			}
-		
+
 		}
 
 		public void Backward(FloatTensor grad = null, FloatTensor grad_origin=null) {
@@ -65,7 +63,7 @@ namespace OpenMined.Syft.Tensor
 					} else {
 						children [grad_origin.Id] += 1;
 					}
-				}	
+				}
 
 				if (this.grad == null) {
 					this.grad = grad;
@@ -98,9 +96,9 @@ namespace OpenMined.Syft.Tensor
 						creators [1].Backward (grad.Neg(), this);
 					}
 
-//					if (!keepgrads) {
-//						ctrl.RemoveTensor (grad.id);
-//					}
+					//					if (!keepgrads) {
+					//						ctrl.RemoveTensor (grad.id);
+					//					}
 				}
 			}
 

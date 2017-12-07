@@ -3,10 +3,8 @@
 using OpenMined.Network.Controllers;
 using OpenMined.Syft;
 
-namespace OpenMined.Network.Servers
-{
-	public class SyftServer : MonoBehaviour
-	{
+namespace OpenMined.Network.Servers {
+	public class SyftServer : MonoBehaviour {
 		public bool Connected;
 		private NetMqPublisher _netMqPublisher;
 		private string _response;
@@ -16,27 +14,23 @@ namespace OpenMined.Network.Servers
 		[SerializeField]
 		private ComputeShader shader;
 
-		private void Start ()
-		{
+		private void Start () {
 			_netMqPublisher = new NetMqPublisher (HandleMessage);
 			_netMqPublisher.Start ();
 
 			controller = new SyftController (shader);
 		}
 
-		private void Update ()
-		{
+		private void Update () {
 			_netMqPublisher.Update ();
 		}
 
-		private string HandleMessage (string message)
-		{
+		private string HandleMessage (string message) {
 			//Debug.LogFormat("HandleMessage... {0}", message);
 			return controller.processMessage (message);
 		}
 
-		private void OnDestroy ()
-		{
+		private void OnDestroy () {
 			_netMqPublisher.Stop ();
 		}
 	}

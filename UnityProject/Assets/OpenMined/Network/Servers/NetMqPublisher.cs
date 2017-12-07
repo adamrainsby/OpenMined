@@ -7,10 +7,8 @@ using NetMQ.Sockets;
 
 using UnityEngine;
 
-namespace OpenMined.Network.Servers
-{
-	public class NetMqPublisher
-	{
+namespace OpenMined.Network.Servers {
+	public class NetMqPublisher {
 		private readonly Thread _listenerWorker;
 
 		private bool _listenerCancelled;
@@ -33,16 +31,14 @@ namespace OpenMined.Network.Servers
 			public string identity;
 			public string message;
 
-			public Request (RouterSocket _router, string _identity, string _message)
-			{
+			public Request (RouterSocket _router, string _identity, string _message) {
 				router = _router;
 				identity = _identity;
 				message = _message;
 			}
 		}
 
-		private void ListenerWork ()
-		{
+		private void ListenerWork () {
 			AsyncIO.ForceDotNet.Force ();
 
 			using (var server = new RouterSocket ()) {
@@ -70,22 +66,19 @@ namespace OpenMined.Network.Servers
 			NetMQConfig.Cleanup ();
 		}
 
-		public NetMqPublisher (MessageDelegate messageDelegate)
-		{
+		public NetMqPublisher (MessageDelegate messageDelegate) {
 			_messageDelegate = messageDelegate;
 			_contactWatch = new Stopwatch ();
 			_contactWatch.Start ();
 			_listenerWorker = new Thread (ListenerWork);
 		}
 
-		public void Start ()
-		{
+		public void Start () {
 			_listenerCancelled = false;
 			_listenerWorker.Start ();
 		}
 
-		public void Update ()
-		{
+		public void Update () {
 			while (!_requestQueue.IsEmpty) {
 				Request request;
 				if (_requestQueue.TryDequeue (out request)) {
@@ -101,8 +94,7 @@ namespace OpenMined.Network.Servers
 			}
 		}
 
-		public void Stop ()
-		{
+		public void Stop () {
 			_listenerCancelled = true;
 			_listenerWorker.Join ();
 		}

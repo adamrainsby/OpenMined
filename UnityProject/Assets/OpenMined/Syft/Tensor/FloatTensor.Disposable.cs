@@ -1,9 +1,7 @@
 using System;
 
-namespace OpenMined.Syft.Tensor
-{
-	public partial class FloatTensor : IDisposable
-	{
+namespace OpenMined.Syft.Tensor {
+	public partial class FloatTensor : IDisposable {
 		// Do not decrement nCreated everytime we dispose an object to avoid id collisions.
 		private static volatile int nDeleted = 0;
 		private bool disposed = false;
@@ -12,16 +10,14 @@ namespace OpenMined.Syft.Tensor
 			get { return nDeleted; }
 		}
 
-		public void Dispose ()
-		{ 
+		public void Dispose () {
 			Dispose (true);
-			GC.SuppressFinalize (this);           
+			GC.SuppressFinalize (this);
 		}
 
-		protected virtual void Dispose (bool disposing)
-		{
+		protected virtual void Dispose (bool disposing) {
 			if (disposed)
-				return; 
+				return;
 
 			if (disposing) {
 				data = null;
@@ -36,8 +32,7 @@ namespace OpenMined.Syft.Tensor
 			disposed = true;
 		}
 
-		~FloatTensor ()
-		{
+		~FloatTensor () {
 			Dispose (false);
 			System.Threading.Interlocked.Increment (ref nDeleted);
 		}

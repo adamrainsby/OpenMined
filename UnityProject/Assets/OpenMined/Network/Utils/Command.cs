@@ -1,9 +1,7 @@
 
-namespace OpenMined.Network.Utils
-{
+namespace OpenMined.Network.Utils {
 
-	public class Command
-	{
+	public class Command {
 		// given that SyftController keeps lists of objects of base types
 		// (at the time of writing this is only Tensors) then this command
 		// selects one of these generic types and performs a command.

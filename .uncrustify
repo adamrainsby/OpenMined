@@ -5,7 +5,7 @@
 #
 
 # The type of line endings. Default=Auto.
-newlines                        = auto     # auto/lf/crlf/cr
+newlines                        = lf     # auto/lf/crlf/cr
 
 # The original size of tabs in the input. Default=8.
 input_tab_size                  = 8        # unsigned number
@@ -214,7 +214,7 @@ sp_inside_sparen_open           = ignore   # ignore/add/remove/force
 sp_after_sparen                 = ignore   # ignore/add/remove/force
 
 # Add or remove space between ')' and '{' of 'if', 'for', 'switch', and 'while', etc.
-sp_sparen_brace                 = ignore   # ignore/add/remove/force
+sp_sparen_brace                 = add   # ignore/add/remove/force
 
 # Add or remove space between 'invariant' and '(' in the D language.
 sp_invariant_paren              = ignore   # ignore/add/remove/force
@@ -368,7 +368,7 @@ sp_after_tparen_close           = ignore   # ignore/add/remove/force
 sp_square_fparen                = ignore   # ignore/add/remove/force
 
 # Add or remove space between ')' and '{' of function.
-sp_fparen_brace                 = ignore   # ignore/add/remove/force
+sp_fparen_brace                 = add   # ignore/add/remove/force
 
 # Java: Add or remove space between ')' and '{{' of double brace initializer.
 sp_fparen_dbrace                = ignore   # ignore/add/remove/force
@@ -702,7 +702,7 @@ indent_paren_open_brace         = false    # false/true
 indent_cs_delegate_brace        = false    # false/true
 
 # Whether the 'namespace' body is indented.
-indent_namespace                = false    # false/true
+indent_namespace                = true    # false/true
 
 # Only indent one namespace and no sub-namespaces.
 # Requires indent_namespace=True.
@@ -719,7 +719,7 @@ indent_namespace_limit          = 0        # unsigned number
 indent_extern                   = false    # false/true
 
 # Whether the 'class' body is indented.
-indent_class                    = false    # false/true
+indent_class                    = true    # false/true
 
 # Whether to indent the stuff after a leading base class colon.
 indent_class_colon              = false    # false/true
@@ -814,7 +814,7 @@ indent_case_shift               = 0        # unsigned number
 indent_case_brace               = 0        # number
 
 # Whether to indent comments found in first column.
-indent_col1_comment             = false    # false/true
+indent_col1_comment             = true    # false/true
 
 # How to indent goto labels
 #   >0: absolute column where 1 is the leftmost column
@@ -1129,13 +1129,13 @@ nl_after_case                   = false    # false/true
 nl_case_colon_brace             = ignore   # ignore/add/remove/force
 
 # Newline between namespace and {.
-nl_namespace_brace              = ignore   # ignore/add/remove/force
+nl_namespace_brace              = remove   # ignore/add/remove/force
 
 # Add or remove newline between 'template<>' and whatever follows.
 nl_template_class               = ignore   # ignore/add/remove/force
 
 # Add or remove newline between 'class' and '{'.
-nl_class_brace                  = ignore   # ignore/add/remove/force
+nl_class_brace                  = remove   # ignore/add/remove/force
 
 # Add or remove newline before/after each ',' in the base class list,
 #   (tied to pos_class_comma).
@@ -1255,7 +1255,7 @@ nl_func_call_end_multi_line     = false    # false/true
 nl_oc_msg_args                  = false    # false/true
 
 # Add or remove newline between function signature and '{'.
-nl_fdef_brace                   = ignore   # ignore/add/remove/force
+nl_fdef_brace                   = remove   # ignore/add/remove/force
 
 # Add or remove newline between C++11 lambda signature and '{'.
 nl_cpp_ldef_brace               = ignore   # ignore/add/remove/force

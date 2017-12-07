@@ -1,7 +1,7 @@
 OpenMined Unity Application
 =============================================
 
-[![Build Status](https://travis-ci.org/OpenMined/OpenMined.svg?branch=master)](https://travis-ci.org/OpenMined/OpenMined) 
+[![Build Status](https://travis-ci.org/OpenMined/OpenMined.svg?branch=master)](https://travis-ci.org/OpenMined/OpenMined)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
@@ -43,11 +43,27 @@ More about this in the [corresponding file](https://github.com/OpenMined/OpenMin
     - Windows & Mac users: Download it from [here](https://store.unity.com/).
     - Linux users: Download it from [here](http://beta.unity3d.com/download/ee86734cf592/public_download.html)
 
-Note: If you do not already have one, you will have to create a Unity account when you open the Application for the first time. For new users, a Personal account should be ok. 
+Note: If you do not already have one, you will have to create a Unity account when you open the Application for the first time. For new users, a Personal account should be ok.
 
 2. Open project in Unity `[File -> Open Project -> Directory/To/OpenMined`]
 
-3. Open Juptyer Notebooks in the `notebooks` directory.  
+3. Open Juptyer Notebooks in the `notebooks` directory.
+
+4. If you are on Mac OS or Linux please see Formatting
+
+## Formatting
+
+To keep a consistent style across the project we are using a git pre-commit hook to format the C# code
+
+### Linux
+1. Run `sudo apt-get install uncrustify`
+2. Run `./setup-git-hooks.sh` from the OpenMined directory
+
+### Mac OS
+1. Ensure you have [Homebrew](https://brew.sh/) installed
+2. Run `brew install uncrustify`
+3. Run `./setup-git-hooks.sh` from the OpenMined directory
+
 
 ## Setup Troubleshooting
 

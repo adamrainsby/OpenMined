@@ -14,7 +14,8 @@ fi
 uncrustify -c .uncrustify $csfiles --suffix ''
 
 # TODO: Implement rollback rather than deleting backups
-backupfiles=$(git diff --name-only --diff-filter=ACM | grep '.unc-backup')
-rm $backupfiles
+backupfiles=$(git ls-files --others --exclude-standard | grep '.unc-backup')
 
-git add .
+[ ! -z "$backupfiles" ] && rm $backupfiles
+
+git add $csfiles
